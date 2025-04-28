@@ -9,20 +9,10 @@
 
   if (!isFramed && currentHost === "chat.turtleboi.cc") {
     var balls = window.open();
-    var url = "https://chat.turtleboi.cc/index.html";
-
     if (balls) {
-      balls.document.body.style.margin = '0';
-      balls.document.body.style.height = '100vh';
-      var iframe = balls.document.createElement('iframe');
-      iframe.style.border = 'none';
-      iframe.style.width = '100%';
-      iframe.style.height = '100%';
-      iframe.style.margin = '0';
-      iframe.src = url;
-      balls.document.body.appendChild(iframe);
+      balls.document.write('<style>body{margin:0;height:100vh}iframe{border:none;width:100%;height:100%;margin:0}</style><iframe src="https://chat.turtleboi.cc/index.html"></iframe>');
+      balls.document.close();
     }
-
     window.location.href = "https://google.com";
   }
   </script>
