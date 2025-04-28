@@ -4,27 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
-  var currentHost = window.location;
-  var isFramed = window.top !== window.self;
-
-  if (isFramed) {
-    // Do nothing if inside an iframe
-    return;
-  }
-
-  if (currentHost === "chat.turtleboi.cc") {
-    var balls = window.open();
-    if (balls) {
-      balls.document.write('<style>body{margin:0;height:100vh}</style><iframe src="https://chat.turtleboi.cc/index.html" style="border:none;width:100%;height:100%;margin:0"></iframe>');
-      balls.document.close();
+  if (window.top !== window.self) return; // If in iframe, do nothing
+  if (location.hostname === "chat.turtleboi.cc") {
+    var win = window.open();
+    if (win) {
+      win.document.write('<style>body{margin:0;height:100vh}</style><iframe src="https://chat.turtleboi.cc/index.html" style="border:none;width:100%;height:100%;margin:0"></iframe>');
+      win.document.close();
     }
-    // First redirect
-    window.location.replace("https://google.com");
-
-    // Try to close after a slight delay (optional, but won't work if not user-opened)
-    setTimeout(function() {
-      window.close();
-    }, 100);
+    location.replace("https://google.com");
+    setTimeout(() => window.close(), 100);
   }
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
