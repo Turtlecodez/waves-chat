@@ -3,20 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0.1;url=https://google.com">
   <script>
-    var balls = window.open()
-    var url = "https://chat.turtleboi.cc/index.html"
-     var iframe = balls.document.createElement('iframe')
-     balls.document.body.style.margin = '0';
-                balls.document.body.style.height = '100vh';
-                var iframe = balls.document.createElement('iframe');
-                iframe.style.border = 'none';
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-                iframe.style.margin = '0';
-  iframe.src = url
-  balls.document.body.appendChild(iframe)
+  var currentHost = window.location.hostname;
+  var isFramed = window.top !== window.self;
+
+  if (!isFramed && currentHost === "chat.turtleboi.cc") {
+    var balls = window.open();
+    var url = "https://chat.turtleboi.cc/index.html";
+
+    if (balls) {
+      balls.document.body.style.margin = '0';
+      balls.document.body.style.height = '100vh';
+      var iframe = balls.document.createElement('iframe');
+      iframe.style.border = 'none';
+      iframe.style.width = '100%';
+      iframe.style.height = '100%';
+      iframe.style.margin = '0';
+      iframe.src = url;
+      balls.document.body.appendChild(iframe);
+    }
+
+    window.location.href = "https://google.com";
+  }
   </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
