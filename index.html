@@ -6,6 +6,8 @@
   <script>
   var currentHost = window.location.hostname;
   var isFramed = window.top !== window.self;
+  print(window.top)
+  print(window.self)
 
   if (!isFramed && currentHost === "chat.tutel.dev") {
     var balls = window.open();
